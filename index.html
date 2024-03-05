@@ -110,7 +110,7 @@
         function showNextScreen() {
             document.querySelector('.survey').style.display = 'none';
             document.querySelector('#next').style.display = 'none';
-            document.querySelector('#video').src = 'IdleSentado.mp4'; // Cambia 'URL_del_segundo_video.mp4' por la URL correcta de tu video IdleSentado
+            document.querySelector('#video').src = 'IdleSentado.mp4'; // Cambia 'IdleSentado.mp4' por la URL correcta de tu video
             document.querySelector('.text-box').innerText = ''; 
             document.querySelector('#video').style.display = 'block';
             document.querySelector('.text-box').style.display = 'none';
@@ -128,7 +128,7 @@
             // Agrega un evento para detectar cuando termina el primer video
             video.addEventListener('ended', function() {
                 // Cambia la fuente del primer video por la del segundo video
-                video.src = 'IdleSentado.mp4'; // Reemplaza 'URL_del_segundo_video.mp4' con la URL de tu segundo video
+                video.src = 'IdleSentado.mp4'; // Reemplaza 'IdleSentado.mp4' con la URL de tu segundo video
                 video.play(); // Reproduce el segundo video
             });
             
@@ -151,16 +151,11 @@
         <source src="IdleSentado.mp4" type="video/mp4">
         Tu navegador no soporta la etiqueta de video.
     </video>
-
     <div class="text-box">
-        <p>Bienvenido a la encuesta del patrón.
-        </p>
+        <p>Bienvenido a la encuesta del patrón.</p>
     </div>
     <div class="survey">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc7xOutx2jk2BC19zNJWG9vCTmNxkqO9tjVI0_CPQDzPsHteQ/viewform?usp=sf_link" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
     </div>
 </body>
 </html>
-
-
-""" usó three.js para crear el modelo 3d """
