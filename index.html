@@ -68,9 +68,12 @@
         }
         #video {
             margin-top: 20px;
+            max-width: 100%;
+            height: auto;
         }
     </style>
     <script>
+        // Función para mostrar la encuesta
         function showSurvey() {
             document.querySelector('.survey').style.display = 'block';
             document.querySelector('#show-survey').style.display = 'none';
@@ -79,6 +82,7 @@
             document.querySelector('.text-box').style.display = 'none';
         }
 
+        // Función para animar el texto
         function typeWriter(text, i, fnCallback) {
             if (i < (text.length)) {
                 document.querySelector(".text-box").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
@@ -92,6 +96,7 @@
             }
         }
 
+        // Función para iniciar la animación del texto
         function StartTextAnimation(i) {
             if (typeof dataText[i] == 'undefined'){
                 setTimeout(function() {
@@ -105,6 +110,7 @@
             }
         }
 
+        // Función para mostrar la siguiente pantalla
         function showNextScreen() {
             document.querySelector('.survey').style.display = 'none';
             document.querySelector('#next').style.display = 'none';
@@ -114,25 +120,35 @@
             document.querySelector('.text-box').style.display = 'none';
         }
 
-
+        // Código que se ejecuta cuando el DOM ha sido completamente cargado
         document.addEventListener('DOMContentLoaded', function(event) {
+            // Agrega un evento para mostrar la encuesta
             document.querySelector('#next').addEventListener('click', showNextScreen);
+
+            // Inicia la animación del texto
             dataText = [document.querySelector(".text-box").innerText];
             StartTextAnimation(0);
 
-            // Obtén el elemento del primer video
+            // Obtén el elemento del video
             var video = document.getElementById('video');
 
-            // Agrega un evento para detectar cuando termina el primer video
+            // Agrega un evento para detectar cuando termina el video
             video.addEventListener('ended', function() {
-                // Cambia la fuente del primer video por la del segundo video
+                // Cambia la fuente del video por la segunda fuente
                 video.src = 'IdleSentado.mp4'; // Reemplaza 'IdleSentado.mp4' con la URL de tu segundo video
                 video.play(); // Reproduce el segundo video
             });
             
-            // Reproduce el primer video en bucle
+            // Reproduce el video en bucle
             video.play();
             video.loop = true;
+
+            // Detecta si el dispositivo es móvil y adapta el video
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                // Es un dispositivo móvil
+                video.style.maxWidth = '100%';
+                video.style.height = 'auto';
+            }
         })
     </script>
 
