@@ -27,12 +27,19 @@
             font-size: 3em;
             color: #003b27;
         }
-        .survey {
+        .survey-container {
             display: none;
-            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .survey {
             width: 70%;
             padding: 10px;
             text-align: center;
+            background-color: #d8ffd9;
+            border-radius: 15px;
         }
         .button-container {
             text-align: center;
@@ -49,9 +56,11 @@
             border: none;
             border-radius: 15px;
         }
-        button:hover {background-color: #d8ffd9}
+        button:hover {
+            background-color: #a5d6a7; /* Verde pastel */
+        }
         button:active {
-            background-color: #d8ffd9;
+            background-color: #a5d6a7; /* Verde pastel */
             transform: translateY(4px);
         }
         .text-box {
@@ -72,7 +81,7 @@
     </style>
     <script>
         function showSurvey() {
-            document.querySelector('.survey').style.display = 'block';
+            document.querySelector('.survey-container').style.display = 'block';
             document.querySelector('#show-survey').style.display = 'none';
             document.querySelector('#next').style.display = 'inline-block';
             document.querySelector('#video').style.display = 'none';
@@ -106,7 +115,7 @@
         }
 
         function showNextScreen() {
-            document.querySelector('.survey').style.display = 'none';
+            document.querySelector('.survey-container').style.display = 'none';
             document.querySelector('#next').style.display = 'none';
             document.querySelector('#video').src = 'IdleSentado.mp4'; // Cambia 'IdleSentado.mp4' por la URL correcta de tu video
             document.querySelector('.text-box').innerText = ''; 
@@ -152,8 +161,10 @@
     <div class="text-box">
         <p>¡Hola! Me presento, soy Juacintosh, el capibara loco, contesta la siguiente encuesta y bailaré para ti.</p>
     </div>
-    <div class="survey">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc7xOutx2jk2BC19zNJWG9vCTmNxkqO9tjVI0_CPQDzPsHteQ/viewform?usp=sf_link" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+    <div class="survey-container">
+        <div class="survey">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc7xOutx2jk2BC19zNJWG9vCTmNxkqO9tjVI0_CPQDzPsHteQ/viewform?usp=sf_link" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+        </div>
     </div>
 </body>
 </html>
