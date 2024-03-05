@@ -73,7 +73,7 @@
             border-right: .15em solid #d8ffd9;
         }
         #video {
-            margin-top: 20px;
+            margin-top: 10px;
             max-width: 100%;
             height: auto;
         }
@@ -118,7 +118,7 @@
             if (typeof dataText[i] == 'undefined'){
                 setTimeout(function() {
                     document.querySelector('#show-survey').style.display = 'inline-block'; // Mostrar botón de mostrar encuesta
-                }, 3000);
+                }, 1000);
                 return;
             }
             if (i < dataText[i].length) {
@@ -132,7 +132,7 @@
         function showNextScreen() {
             document.querySelector('.survey').style.display = 'none';
             document.querySelector('#next').style.display = 'none';
-            document.querySelector('#video').src = 'IdleSentado.mp4'; // Cambia 'IdleSentado.mp4' por la URL correcta de tu video
+            document.querySelector('#video').src = 'InicioDancingCapi.mp4'; // Cambia 'IdleSentado.mp4' por la URL correcta de tu video
             document.querySelector('.text-box').innerText = ''; 
             document.querySelector('#video').style.display = 'block';
             document.querySelector('.text-box').style.display = 'none';
@@ -140,7 +140,14 @@
             // Muestra el contenedor del GIF después de 3 segundos
             setTimeout(function() {
                 document.getElementById('gif-container').style.display = 'block';
-            }, 3000);
+            }, 12000);
+
+            // Reproduce el tercer video después de 10 segundos del segundo video
+            setTimeout(function() {
+                var video = document.getElementById('video');
+                video.src = 'DancingCapi.mp4';
+                video.play();
+            }, 12000);
         }
 
         // Código que se ejecuta cuando el DOM ha sido completamente cargado
@@ -155,19 +162,6 @@
             // Obtén el elemento del video
             var video = document.getElementById('video');
 
-            // Agrega un evento para detectar cuando termina el video
-            video.addEventListener('ended', function() {
-                // Cambia la fuente del video por la segunda fuente
-                video.src = 'InicioDancingCapi.mp4'; // Reemplaza 'IdleSentado.mp4' con la URL de tu segundo video
-                video.play(); // Reproduce el segundo video
-            });
-
-            video.addEventListener('ended', function() {
-                // Cambiar la fuente del video por el tercer video cuando el segundo video termine
-                video.src = 'DancingCapi.mp4'; // Reemplaza 'TercerVideo.mp4' con la URL del tercer video
-                video.play(); // Reproducir el tercer video
-            })
-            
             // Reproduce el video en bucle
             video.play();
             video.loop = true;
