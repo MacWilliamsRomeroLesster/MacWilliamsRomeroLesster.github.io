@@ -144,47 +144,31 @@
         }
 
         // Código que se ejecuta cuando el DOM ha sido completamente cargado
-          document.addEventListener('DOMContentLoaded', function(event) {
+        document.addEventListener('DOMContentLoaded', function(event) {
+            // Agrega un evento para mostrar la encuesta
+            document.querySelector('#next').addEventListener('click', showNextScreen);
+
+            // Inicia la animación del texto
+            dataText = [document.querySelector(".text-box").innerText];
+            StartTextAnimation(0);
+
+            // Obtén el elemento del video
             var video = document.getElementById('video');
-    
-            var videos = [
-                'IdleSentado.mp4', // Primer video
-                'InicioDancingCapi.mp4', // Segundo video
-                'DancingCapi.mp4' // Tercer video
-            ];
-    
-            var currentVideoIndex = 0;
-    
-            // Función para cambiar el video al siguiente en la lista
-            function showNextVideo() {
-                currentVideoIndex++;
-                if (currentVideoIndex < videos.length) {
-                    video.src = videos[currentVideoIndex];
-                    video.play();
-                }
-            }
-    
-            // Evento al presionar el botón "Siguiente"
-            document.querySelector('#next').addEventListener('click', function() {
-                showNextVideo();
-            });
-    
-            // Evento cuando el video actual termina
+
+            // Agrega un evento para detectar cuando termina el video
             video.addEventListener('ended', function() {
-                if (currentVideoIndex === 1) {
-                    // Si el segundo video ha terminado, reproduce el tercer video
-                    currentVideoIndex++;
-                    video.src = videos[currentVideoIndex];
-                    video.play();
-                } else if (currentVideoIndex === 2) {
-                    // Si el tercer video ha terminado, vuelve a reproducir el tercer video en bucle
-                    video.loop = true;
-                    video.play();
-                }
+                // Cambia la fuente del video por la segunda fuente
+                video.src = 'InicioDancingCapi.mp4'; // Reemplaza 'IdleSentado.mp4' con la URL de tu segundo video
+                video.play(); // Reproduce el segundo video
             });
-    
-            // Reproduce el primer video en bucle
-            video.src = videos[currentVideoIndex];
+
+            video.addEventListener('ended', function() {
+                // Cambiar la fuente del video por el tercer video cuando el segundo video termine
+                video.src = 'DancingCapi.mp4'; // Reemplaza 'TercerVideo.mp4' con la URL del tercer video
+                video.play(); // Reproducir el tercer video
+            })
+            
+            // Reproduce el video en bucle
             video.play();
             video.loop = true;
 
