@@ -110,7 +110,7 @@
         function showNextScreen() {
             document.querySelector('.survey').style.display = 'none';
             document.querySelector('#next').style.display = 'none';
-            document.querySelector('#video').src = 'IdleSentado.avi'; // Cambia 'URL_del_segundo_video.mp4' por la URL correcta de tu video IdleSentado
+            document.querySelector('#video').src = 'IdleSentado.mp4'; // Cambia 'URL_del_segundo_video.mp4' por la URL correcta de tu video IdleSentado
             document.querySelector('.text-box').innerText = ''; 
             document.querySelector('#video').style.display = 'block';
             document.querySelector('.text-box').style.display = 'none';
@@ -128,7 +128,7 @@
             // Agrega un evento para detectar cuando termina el primer video
             video.addEventListener('ended', function() {
                 // Cambia la fuente del primer video por la del segundo video
-                video.src = 'IdleSentado.avi'; // Reemplaza 'URL_del_segundo_video.mp4' con la URL de tu segundo video
+                video.src = 'IdleSentado.mp4'; // Reemplaza 'URL_del_segundo_video.mp4' con la URL de tu segundo video
                 video.play(); // Reproduce el segundo video
             });
             
@@ -148,7 +148,7 @@
         <button id="next" style="display: none;">Siguiente</button>
     </div>
     <video id="video" width="560" height="315" controls autoplay loop style="display: none;">
-        <source src="IdleSentado.avi" type="video/avi">
+        <source src="IdleSentado.mp4" type="video/mp4">
         Tu navegador no soporta la etiqueta de video.
     </video>
 
