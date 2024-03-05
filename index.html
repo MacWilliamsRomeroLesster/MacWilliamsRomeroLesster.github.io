@@ -10,6 +10,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
         }
         .header {
             text-align: center;
@@ -73,6 +77,17 @@
             max-width: 100%;
             height: auto;
         }
+        /* Estilos para el contenedor del GIF */
+        #gif-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+            z-index: 9999; /* Asegura que el GIF esté en la parte superior */
+            display: none; /* Inicialmente oculto */
+        }
     </style>
     <script>
         // Función para mostrar la encuesta
@@ -121,6 +136,11 @@
             document.querySelector('.text-box').innerText = ''; 
             document.querySelector('#video').style.display = 'block';
             document.querySelector('.text-box').style.display = 'none';
+
+            // Muestra el contenedor del GIF después de 3 segundos
+            setTimeout(function() {
+                document.getElementById('gif-container').style.display = 'block';
+            }, 3000);
         }
 
         // Código que se ejecuta cuando el DOM ha sido completamente cargado
@@ -174,6 +194,12 @@
     </div>
     <div class="survey">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc7xOutx2jk2BC19zNJWG9vCTmNxkqO9tjVI0_CPQDzPsHteQ/viewform?usp=sf_link" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+    </div>
+
+    <!-- Contenedor para el GIF -->
+    <div id="gif-container">
+        <!-- Inserta aquí tu GIF -->
+        <img src="confetti.gif" alt="GIF" style="width: 100%; height: 100%;">
     </div>
 </body>
 </html>
