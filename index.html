@@ -94,7 +94,7 @@
                 }, 100);
             }
             else if (typeof fnCallback == 'function') {
-                setTimeout(fnCallback, 700);
+                setTimeout(fnCallback, 500);
             }
         }
 
@@ -102,8 +102,9 @@
         function StartTextAnimation(i) {
             if (typeof dataText[i] == 'undefined'){
                 setTimeout(function() {
-                    StartTextAnimation(0);
-                }, 20000);
+                    document.querySelector('#show-survey').style.display = 'inline-block'; // Mostrar botón de mostrar encuesta
+                }, 3000);
+                return;
             }
             if (i < dataText[i].length) {
                 typeWriter(dataText[i], 0, function(){
@@ -160,7 +161,8 @@
         <h1>UCFESTIVAL</h1>
     </div>
     <div class="button-container">
-        <button id="show-survey" onclick="showSurvey()">Mostrar encuesta</button>
+        <!-- Botón para mostrar la encuesta (inicialmente oculto) -->
+        <button id="show-survey" style="display: none;" onclick="showSurvey()">Mostrar encuesta</button>
         <button id="next" style="display: none;">Siguiente</button>
     </div>
     <video id="video" width="560" height="315" autoplay loop muted style="pointer-events: none;">
