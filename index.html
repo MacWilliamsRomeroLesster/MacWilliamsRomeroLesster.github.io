@@ -139,7 +139,7 @@
 
             setTimeout(function() {
                 document.getElementById('audio').play(); // Reproduce la canción
-            }, 3000);
+            }, 4000);
 
             setTimeout(function() {
                 document.getElementById('gif-container').style.display = 'block';
@@ -155,6 +155,14 @@
 
         // Código que se ejecuta cuando el DOM ha sido completamente cargado
         document.addEventListener('DOMContentLoaded', function(event) {
+            // Obtén el elemento del primer audio
+            var audio1 = document.getElementById('audio1');
+            // Obtén el elemento del segundo audio
+            var audio2 = document.getElementById('audio2');
+
+            // Reproduce el primer audio al cargar la página
+            audio1.play();
+
             // Agrega un evento para mostrar la encuesta
             document.querySelector('#next').addEventListener('click', showNextScreen);
 
@@ -168,6 +176,11 @@
             // Reproduce el video en bucle
             video.play();
             video.loop = true;
+            
+            // Agrega un evento para detener el primer audio y reproducir el segundo audio
+            audio1.addEventListener('play', function() {
+                audio2.pause(); // Pausa el segundo audio si se está reproduciendo
+            })
 
             // Detecta si el dispositivo es móvil y, en ese caso, ajusta el video
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -186,7 +199,7 @@
     <div class="button-container">
         <!-- Botón para mostrar la encuesta (inicialmente oculto) -->
         <button id="show-survey" style="display: none;" onclick="showSurvey()">Mostrar encuesta</button>
-        <button id="next" style="display: none;">Siguiente</button>
+        <button id="next" style="display: none;">Terminar encuesta</button>
     </div>
     <video id="video" width="560" height="315" autoplay loop muted style="pointer-events: none;">
         <source src="IdleSentado.mp4" type="video/mp4">
@@ -199,6 +212,7 @@
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc7xOutx2jk2BC19zNJWG9vCTmNxkqO9tjVI0_CPQDzPsHteQ/viewform?usp=sf_link" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
     </div>
     <!-- Elemento de audio para reproducir el archivo MP3 -->
+    <audio id="audio1" src="opmusic.mp3" autoplay></audio>
     <audio id="audio" src="ChipiChapaDUbi.mp3"></audio>
     <!-- Contenedor para el GIF -->
     <div id="gif-container">
