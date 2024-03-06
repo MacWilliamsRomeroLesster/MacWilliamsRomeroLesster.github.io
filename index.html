@@ -136,8 +136,11 @@
             document.querySelector('.text-box').innerText = ''; 
             document.querySelector('#video').style.display = 'block';
             document.querySelector('.text-box').style.display = 'none';
-            document.getElementById('audio').play(); // Reproduce la canción
-            // Muestra el contenedor del GIF después de 3 segundos
+
+            setTimeout(function() {
+                document.getElementById('audio').play(); // Reproduce la canción
+            }, 3000);
+
             setTimeout(function() {
                 document.getElementById('gif-container').style.display = 'block';
             }, 12000);
